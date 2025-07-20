@@ -31,6 +31,10 @@ The test suite covers all core functionalities of the RAG application:
 
 ### Running Tests Locally
 
+- Before running the tests, add the OPENAI_API_KEY in docker-compose and docker-compose.test file.
+- Add Gemini API key llm-judge.js file
+
+
 1. **Install dependencies:**
    ```bash
    npm install
@@ -134,6 +138,7 @@ npm run report:clean
   - Semantic quality assessment using LLM judge
   - Hallucination prevention testing
   - Response quality metrics (relevance, accuracy, completeness)
+  - Used Gemini API for LLM-as-Judge response
 
 ### 5. Error Handling Tests (`error-handling.test.js`)
 - **Purpose**: Tests application resilience and error scenarios
