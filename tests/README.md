@@ -1,4 +1,4 @@
-# Note : There were couple of issue while automating the entire RAG autmation flow through API, that's why I've used the UI approach and have validated the API's separately. I've had a great deal of help from AI while crating this automation suite and have learned a lot in this process. I've documented all the learnings in a separate document.
+## Note : There were couple of issue while automating the entire RAG response validation flow through API, that's why I've used the UI approach and have validated the API's separately. I've had a great deal of help from AI while crating this automation suite and have learned a lot in this process. I've documented all the learnings in a separate document.
 
 # RAG Application Test Suite
 
