@@ -1,3 +1,5 @@
+# Note : There were couple of issue while automating the entire RAG autmation flow through API, that's why I've used the UI approach and have validated the API's separately. I've had a great deal of help from AI while crating this automation suite and have learned a lot in this process. I've documented all the learnings in a separate document.
+
 # RAG Application Test Suite
 
 This test suite provides comprehensive end-to-end testing for the RAG (Retrieval-Augmented Generation) application using Playwright with Allure reporting.
@@ -152,7 +154,7 @@ npm run report:clean
   - Responsive design across viewports
   - Navigation and interaction testing
 
-### 7. WebSocket Tests (`websocket.test.js`) - Bonus
+### 7. WebSocket Tests (`websocket.test.js`)
 - **Purpose**: Tests real-time WebSocket communication
 - **Coverage**:
   - WebSocket connection establishment
