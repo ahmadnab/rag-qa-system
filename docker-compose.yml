@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/tmp/app
+    environment:
+      - MONGO_URI=mongodb://user:pass@mongodbatlas:27017/?directConnection=true
+      - ENV=LOCAL
+      - OPENAI_API_KEY=<INSERT_OPENAI_API_KEY>
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=ap-south-1
+      - S3_ENDPOINT_URL=http://s3:4566
+      - S3_BUCKET_NAME=qna-documents
+    command: ["/bin/bash", "-c", "uvicorn --host=0.0.0.0 rag.app:app"]
+    depends_on:
+      - mongodbatlas
+      - s3
+
+  mongodbatlas:
+    image: mongodb/mongodb-atlas-local:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+
+  s3:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - S3_BUCKET_NAME=qna-documents
+    volumes:
+      - ./aws:/etc/localstack/init/ready.d
+
+  aws:
+    container_name: aws-cli
+    image: amazon/aws-cli:latest
+    environment:
+      - AWS_REGION=ap-south-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    entrypoint: tail -f /dev/null
+    depends_on:
+      - s3
+      - app

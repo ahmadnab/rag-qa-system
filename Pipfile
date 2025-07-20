@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+
+[packages]
+fastapi = "*"
+python-multipart = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
+loguru = "*"
+Cython = "*"
+requests = "*"
+stringcase = "*"
+python-dotenv = "*"
+"pymongo[srv]" = "*"
+mongomock = "*"
+typing-extensions = "*"
+openai = "*"
+langchain = "*"
+langgraph = "*"
+langchain-openai = "*"
+langchain_community = "*"
+langchain-qdrant = "*"
+qdrant-client = "*"
+"unstructured[pdf]" = "*"
+boto3 = "*"
+langchain-mongodb = "*"
+injector = "0.20.1"

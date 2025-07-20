@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/tmp/app
+    environment:
+      - MONGO_URI=mongodb://user:pass@mongodbatlas:27017/?directConnection=true
+      - ENV=LOCAL
+      - OPENAI_API_KEY=<>INSERT_OPENAI_API_KEY>
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=ap-south-1
+      - S3_ENDPOINT_URL=http://s3:4566
+      - S3_BUCKET_NAME=qna-documents
+    command: ["/bin/bash", "-c", "uvicorn --host=0.0.0.0 rag.app:app"]
+    depends_on:
+      - mongodbatlas
+      - s3
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./tests:/app/tests
+      - ./test-results:/app/test-results
+      - ./allure-results:/app/allure-results
+    environment:
+      - PLAYWRIGHT_BASE_URL=http://app:8000
+    depends_on:
+      app:
+        condition: service_healthy
+    command: >
+      sh -c "
+        echo 'Waiting for application to be ready...' &&
+        sleep 10 &&
+        npx playwright test --reporter=html,allure-playwright
+      "
+
+  mongodbatlas:
+    image: mongodb/mongodb-atlas-local:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+
+  s3:
+    image: localstack/localstack
+    container_name: localstack-test
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - S3_BUCKET_NAME=qna-documents
+    volumes:
+      - ./aws:/etc/localstack/init/ready.d
+
+  aws:
+    container_name: aws-cli-test
+    image: amazon/aws-cli:latest
+    environment:
+      - AWS_REGION=ap-south-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    entrypoint: tail -f /dev/null
+    depends_on:
+      - s3
+
+  allure:
+    image: frankescobar/allure-docker-service
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 3
+      KEEP_HISTORY: 1
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./allure-results:/app/allure-results

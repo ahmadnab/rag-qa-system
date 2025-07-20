@@ -1,0 +1,215 @@
+{
+  "generated_at": "2025-01-20T12:00:00.000Z",
+  "generation_method": "claude-analysis-of-actual-pdf-content",
+  "source_content": "Intel Core i7-13700K and NVIDIA GeForce RTX 4090 Technical Specifications",
+  "document_tests": {
+    "tech_specs.pdf": {
+      "description": "Test data for tech_specs.pdf - Intel Core i7-13700K and NVIDIA GeForce RTX 4090 specifications",
+      "document_analysis": {
+        "main_topics": ["Intel Core i7-13700K processor", "NVIDIA GeForce RTX 4090 graphics card"],
+        "key_specifications": ["16 cores", "24 threads", "5.4 GHz boost", "30 MB L3 cache", "16,384 CUDA cores", "24 GB GDDR6X"],
+        "architectures": ["Raptor Lake", "ADA Lovelace"],
+        "technologies": ["Hyper-Threading", "Turbo Boost", "Thread Director", "NVENC", "NVDEC", "Ray Tracing"],
+        "performance_metrics": ["Cinebench R23: ~30,700 pts", "Geekbench 6: ~17,000 multi-core", "FP32 peak: ~82.6 TFLOPS"],
+        "power_specs": ["TDP: 125W/450W", "Memory bandwidth: ~89.6 GB/s/~1000 GB/s"],
+        "author": "Technical Documentation",
+        "word_count": 250,
+        "key_elements": ["processor specs", "graphics card specs", "performance benchmarks", "technical features"]
+      },
+      "factual_questions": [
+        {
+          "id": "tech_main_content",
+          "question": "What products are described in this technical specification document?",
+          "expectedKeywords": ["Intel Core i7-13700K", "NVIDIA GeForce RTX 4090", "processor", "graphics card", "specifications"],
+          "acceptableResponses": ["Intel processor and NVIDIA graphics card", "CPU and GPU specifications", "i7-13700K and RTX 4090"],
+          "mustContainAny": true,
+          "category": "general_content",
+          "difficulty": "easy"
+        },
+        {
+          "id": "tech_processor_cores",
+          "question": "How many cores does the Intel Core i7-13700K have?",
+          "expectedKeywords": ["16 cores", "8 P-cores", "8 E-cores", "performance cores", "efficiency cores"],
+          "acceptableResponses": ["16 cores total", "8 performance and 8 efficiency cores", "16 cores with 24 threads"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_processor_boost_freq",
+          "question": "What is the maximum boost frequency of the Intel Core i7-13700K?",
+          "expectedKeywords": ["5.4 GHz", "boost frequency", "maximum frequency"],
+          "acceptableResponses": ["5.4 GHz boost", "up to 5.4 GHz", "maximum 5.4 GHz"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_gpu_cuda_cores",
+          "question": "How many CUDA cores does the NVIDIA GeForce RTX 4090 have?",
+          "expectedKeywords": ["16,384", "CUDA cores", "16384"],
+          "acceptableResponses": ["16,384 CUDA cores", "16384 CUDA cores"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_gpu_memory",
+          "question": "How much memory does the RTX 4090 have?",
+          "expectedKeywords": ["24 GB", "GDDR6X", "memory"],
+          "acceptableResponses": ["24 GB GDDR6X", "24 GB memory", "24 gigabytes"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_architecture",
+          "question": "What architecture does the RTX 4090 use?",
+          "expectedKeywords": ["ADA Lovelace", "5nm", "architecture"],
+          "acceptableResponses": ["ADA Lovelace architecture", "Ada Lovelace on 5nm"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_processor_socket",
+          "question": "What socket does the Intel Core i7-13700K use?",
+          "expectedKeywords": ["LGA-1700", "socket"],
+          "acceptableResponses": ["LGA-1700 socket", "LGA 1700"],
+          "mustContainAny": true,
+          "category": "specific_details",
+          "difficulty": "medium"
+        }
+      ],
+      "hallucination_tests": [
+        {
+          "id": "tech_amd_hallucination",
+          "question": "What AMD processors are mentioned in this document?",
+          "prohibitedContent": ["AMD", "Ryzen", "EPYC", "Threadripper", "Radeon"],
+          "expectedBehavior": "should_reject",
+          "category": "hallucination_prevention"
+        },
+        {
+          "id": "tech_apple_hallucination",
+          "question": "What Apple Silicon chips are discussed in this specification?",
+          "prohibitedContent": ["M1", "M2", "M3", "Apple Silicon", "A-series", "iPhone"],
+          "expectedBehavior": "should_reject",
+          "category": "hallucination_prevention"
+        },
+        {
+          "id": "tech_pricing_hallucination",
+          "question": "What are the current market prices for these components?",
+          "prohibitedContent": ["$", "price", "cost", "market", "amazon", "newegg"],
+          "expectedBehavior": "should_reject",
+          "category": "hallucination_prevention"
+        },
+        {
+          "id": "tech_mobile_hallucination",
+          "question": "How do these specifications compare to mobile processors?",
+          "prohibitedContent": ["smartphone", "mobile", "tablet", "phone", "android", "ios"],
+          "expectedBehavior": "should_reject",
+          "category": "hallucination_prevention"
+        }
+      ],
+      "analytical_questions": [
+        {
+          "id": "tech_performance_analysis",
+          "question": "What are the key performance highlights of these components?",
+          "expectedKeywords": ["Cinebench", "Geekbench", "TFLOPS", "performance", "benchmark"],
+          "mustContainAny": false,
+          "category": "analytical",
+          "difficulty": "hard"
+        },
+        {
+          "id": "tech_power_consumption",
+          "question": "What are the power requirements for these components?",
+          "expectedKeywords": ["TDP", "125W", "450W", "power", "PSU", "850W"],
+          "mustContainAny": false,
+          "category": "analytical",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_memory_support",
+          "question": "What memory technologies are supported by these components?",
+          "expectedKeywords": ["DDR4", "DDR5", "GDDR6X", "memory", "bandwidth"],
+          "mustContainAny": false,
+          "category": "analytical",
+          "difficulty": "medium"
+        },
+        {
+          "id": "tech_features_summary",
+          "question": "What are the main technical features of the i7-13700K processor?",
+          "expectedKeywords": ["Hyper-Threading", "Turbo Boost", "Thread Director", "cores", "cache"],
+          "mustContainAny": false,
+          "category": "analytical",
+          "difficulty": "hard"
+        }
+      ],
+      "edge_cases": [
+        {
+          "id": "tech_empty_question",
+          "question": "",
+          "expectedBehavior": "should_error",
+          "expectedStatusCodes": [400, 422],
+          "category": "edge_case"
+        },
+        {
+          "id": "tech_single_char",
+          "question": "?",
+          "expectedBehavior": "graceful_handling",
+          "category": "edge_case"
+        },
+        {
+          "id": "tech_very_long_question",
+          "question": "What are the detailed technical implications of the hybrid architecture design methodology implemented in the Intel Core i7-13700K processor's performance and efficiency core configuration as it relates to modern multi-threaded workload optimization paradigms?",
+          "expectedBehavior": "graceful_handling",
+          "category": "edge_case"
+        }
+      ]
+    }
+  },
+  "quality_benchmarks": {
+    "response_time_ms": {
+      "excellent": 1000,
+      "good": 3000,
+      "acceptable": 10000,
+      "poor": 30000
+    },
+    "response_length": {
+      "minimum": 10,
+      "optimal_min": 50,
+      "optimal_max": 500,
+      "maximum": 2000
+    },
+    "success_rate": {
+      "excellent": 0.95,
+      "good": 0.85,
+      "acceptable": 0.70,
+      "poor": 0.50
+    }
+  },
+  "llm_judge_criteria": {
+    "relevance": {
+      "description": "How well does the answer relate to the question and document content?",
+      "scale": "1-5",
+      "context_for_judge": "The document contains technical specifications for Intel Core i7-13700K processor and NVIDIA GeForce RTX 4090 graphics card with detailed hardware specifications, performance metrics, and technical features."
+    },
+    "accuracy": {
+      "description": "How factually correct is the answer based on the actual document content?",
+      "scale": "1-5",
+      "context_for_judge": "Verify answers against actual technical specifications: Intel i7-13700K has 16 cores (8 P-cores + 8 E-cores), 24 threads, 5.4 GHz boost frequency, LGA-1700 socket, 125W TDP. RTX 4090 has Ada Lovelace architecture, 16,384 CUDA cores, 24 GB GDDR6X memory, 450W TDP."
+    },
+    "completeness": {
+      "description": "How thoroughly does the answer address the question?",
+      "scale": "1-5"
+    },
+    "grounding": {
+      "description": "How well is the answer grounded in the source document content?",
+      "scale": "1-5",
+      "context_for_judge": "Answers should reference actual technical specifications, performance metrics, and hardware features from the tech specs document, not make up details or reference other products not mentioned."
+    }
+  },
+  "document_context_for_llm_judge": {
+    "tech_specs.pdf": "Contains technical specifications for Intel Core i7-13700K processor (13th-gen Raptor Lake, 16 cores/24 threads, 5.4 GHz boost, LGA-1700 socket, 125W TDP) and NVIDIA GeForce RTX 4090 graphics card (Ada Lovelace architecture, 5nm, 16,384 CUDA cores, 24 GB GDDR6X, 450W TDP, $1,599 MSRP). Includes performance benchmarks (Cinebench R23: ~30,700 pts, Geekbench 6: ~17,000 multi-core, FP32: ~82.6 TFLOPS), memory support (DDR4-3200/DDR5-5600, GDDR6X), and technical features (Hyper-Threading, Turbo Boost, Thread Director, NVENC, NVDEC, Ray Tracing)."
+  }
+}
